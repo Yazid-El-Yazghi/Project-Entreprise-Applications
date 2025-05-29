@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>Evenementen | SamenSterk Anderlecht</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+    <!-- Navigatie -->
+    <nav class="bg-blue-900 text-white px-6 py-4 flex justify-between items-center shadow">
+        <a th:href="@{/}" class="font-bold text-xl hover:underline">SamenSterk Anderlecht</a>
+        <div class="space-x-4">
+            <a th:href="@{/new}" class="hover:underline">Nieuw evenement</a>
+            <a th:href="@{/about}" class="hover:underline">Over ons</a>
+        </div>
+    </nav>
+
+    <main class="flex-1 container mx-auto px-4 py-8">
+        <h1 class="text-2xl font-bold mb-6 text-blue-900">Laatste evenementen</h1>
+        <div class="overflow-x-auto">
+            <table class="min-w-full bg-white shadow rounded mb-4">
+                <thead class="bg-blue-100">
+                    <tr>
+                        <th class="py-2 px-4 border-b text-left">Titel</th>
+                        <th class="py-2 px-4 border-b text-left">Organisatie</th>
+                        <th class="py-2 px-4 border-b text-left">Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Thymeleaf: herhaal voor elk event -->
+                    <tr th:each="event : ${events}" class="hover:bg-blue-50">
+                        <td class="py-2 px-4 border-b" th:text="${event.titel}">Titel</td>
+                        <td class="py-2 px-4 border-b" th:text="${event.organisatie}">Organisatie</td>
+                        <td class="py-2 px-4 border-b">
+                            <a th:href="@{/details/{id}(id=${event.id})}" class="text-blue-700 hover:underline">Details</a>
+                        </td>
+                    </tr>
+                    <!-- /Thymeleaf -->
+                </tbody>
+            </table>
+        </div>
+        <a th:href="@{/new}" class="inline-block bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800 mt-2">Nieuw evenement toevoegen</a>
+    </main>
+
+    <footer class="bg-blue-900 text-white text-center py-3 mt-8 shadow-inner">
+        &copy; 2024 SamenSterk Anderlecht
+    </footer>
+</body>
+</html>

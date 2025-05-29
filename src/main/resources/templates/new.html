@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>Nieuw evenement | SamenSterk Anderlecht</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+    <!-- Navigatie -->
+    <nav class="bg-blue-900 text-white px-6 py-4 flex justify-between items-center shadow">
+        <a th:href="@{/}" class="font-bold text-xl hover:underline">SamenSterk Anderlecht</a>
+        <div class="space-x-4">
+            <a th:href="@{/new}" class="hover:underline">Nieuw evenement</a>
+            <a th:href="@{/about}" class="hover:underline">Over ons</a>
+        </div>
+    </nav>
+
+    <main class="flex-1 container mx-auto px-4 py-8">
+        <h1 class="text-2xl font-bold mb-6 text-blue-900">Nieuw evenement toevoegen</h1>
+        <div class="bg-white shadow rounded p-6 max-w-lg mx-auto">
+            <form th:action="@{/new}" th:object="${event}" method="post" class="space-y-4">
+                <div th:if="${error}" class="bg-red-100 text-red-700 p-2 rounded mb-2" th:text="${error}">Foutmelding</div>
+                <div>
+                    <label class="block font-semibold mb-1">Titel</label>
+                    <input type="text" th:field="*{titel}" class="w-full border rounded px-2 py-1" required>
+                    <div th:if="${#fields.hasErrors('titel')}" class="text-red-600 text-sm" th:errors="*{titel}"></div>
+                </div>
+                <div>
+                    <label class="block font-semibold mb-1">Omschrijving</label>
+                    <textarea th:field="*{omschrijving}" class="w-full border rounded px-2 py-1" required></textarea>
+                    <div th:if="${#fields.hasErrors('omschrijving')}" class="text-red-600 text-sm" th:errors="*{omschrijving}"></div>
+                </div>
+                <div>
+                    <label class="block font-semibold mb-1">Organisatie</label>
+                    <input type="text" th:field="*{organisatie}" class="w-full border rounded px-2 py-1" required>
+                    <div th:if="${#fields.hasErrors('organisatie')}" class="text-red-600 text-sm" th:errors="*{organisatie}"></div>
+                </div>
+                <div>
+                    <label class="block font-semibold mb-1">Contactpersoon e-mail</label>
+                    <input type="email" th:field="*{email}" class="w-full border rounded px-2 py-1" required>
+                    <div th:if="${#fields.hasErrors('email')}" class="text-red-600 text-sm" th:errors="*{email}"></div>
+                </div>
+                <div>
+                    <label class="block font-semibold mb-1">Tijdstip</label>
+                    <input type="datetime-local" th:field="*{tijdstip}" class="w-full border rounded px-2 py-1" required>
+                    <div th:if="${#fields.hasErrors('tijdstip')}" class="text-red-600 text-sm" th:errors="*{tijdstip}"></div>
+                </div>
+                <div>
+                    <label class="block font-semibold mb-1">Locatie naam</label>
+                    <input type="text" th:field="*{locatie.naam}" class="w-full border rounded px-2 py-1" required>
+                    <div th:if="${#fields.hasErrors('locatie.naam')}" class="text-red-600 text-sm" th:errors="*{locatie.naam}"></div>
+                </div>
+                <div>
+                    <label class="block font-semibold mb-1">Locatie adres</label>
+                    <input type="text" th:field="*{locatie.adres}" class="w-full border rounded px-2 py-1" required>
+                    <div th:if="${#fields.hasErrors('locatie.adres')}" class="text-red-600 text-sm" th:errors="*{locatie.adres}"></div>
+                </div>
+                <div>
+                    <label class="block font-semibold mb-1">Locatie capaciteit</label>
+                    <input type="number" th:field="*{locatie.capaciteit}" class="w-full border rounded px-2 py-1" min="1" required>
+                    <div th:if="${#fields.hasErrors('locatie.capaciteit')}" class="text-red-600 text-sm" th:errors="*{locatie.capaciteit}"></div>
+                </div>
+                <button type="submit" class="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800">Toevoegen</button>
+                <a th:href="@{/}" class="ml-4 text-blue-700 hover:underline">Annuleren</a>
+            </form>
+        </div>
+    </main>
+
+    <footer class="bg-blue-900 text-white text-center py-3 mt-8 shadow-inner">
+        &copy; 2024 SamenSterk Anderlecht
+    </footer>
+</body>
+</html>

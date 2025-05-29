@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>Over ons | SamenSterk Anderlecht</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+    <!-- Navigatie -->
+    <nav class="bg-blue-900 text-white px-6 py-4 flex justify-between items-center shadow">
+        <a th:href="@{/}" class="font-bold text-xl hover:underline">SamenSterk Anderlecht</a>
+        <div class="space-x-4">
+            <a th:href="@{/new}" class="hover:underline">Nieuw evenement</a>
+            <a th:href="@{/about}" class="hover:underline">Over ons</a>
+        </div>
+    </nav>
+
+    <main class="flex-1 container mx-auto px-4 py-8">
+        <h1 class="text-2xl font-bold mb-6 text-blue-900">Over SamenSterk Anderlecht</h1>
+        <div class="bg-white shadow rounded p-6">
+            <p><span class="font-semibold">Adres:</span> Fictiestraat 123, 1070 Anderlecht</p>
+            <p><span class="font-semibold">Contact:</span> info@samensterk-anderlecht.be | 02 123 45 67</p>
+            <p class="mt-4">
+                <span class="font-semibold">Omschrijving:</span><br>
+                SamenSterk Anderlecht is een ngo die zich inzet voor gemeenschapsopbouw en hulp aan mensen die het minder breed hebben in Anderlecht.
+                Wij organiseren evenementen, bieden ondersteuning en werken samen met lokale partners om een warmere buurt te creëren.<br><br>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, nisi vel consectetur cursus, nisl erat dictum erat, nec dictum erat nisl vel erat.
+                Integer euismod, nisi vel consectetur cursus, nisl erat dictum erat, nec dictum erat nisl vel erat.
+            </p>
+        </div>
+    </main>
+
+    <footer class="bg-blue-900 text-white text-center py-3 mt-8 shadow-inner">
+        &copy; 2024 SamenSterk Anderlecht
+    </footer>
+</body>
+</html>
