@@ -11,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -29,18 +28,20 @@ public class EventController {
 
     @GetMapping("/new")
     public String newEvent(Model model) {
-        model.addAttribute("event", new Event());
-        model.addAttribute("locations", locationRepository.findAll());
+        Event event = new Event();
+        event.setLocatie(new Location());
+        model.addAttribute("event", event);
         return "new";
     }
 
     @PostMapping("/new")
     public String createEvent(@ModelAttribute("event") @Valid Event event, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            model.addAttribute("locations", locationRepository.findAll());
             model.addAttribute("error", "Vul alle velden correct in.");
             return "new";
         }
+        Location savedLocation = locationRepository.save(event.getLocatie());
+        event.setLocatie(savedLocation);
         eventRepository.save(event);
         return "redirect:/";
     }
