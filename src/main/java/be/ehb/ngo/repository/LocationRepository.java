@@ -1,4 +1,7 @@
 package be.ehb.ngo.repository;
 
-public interface LocationRepository {
+import be.ehb.ngo.model.Location;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface LocationRepository extends JpaRepository<Location, Long> {
 }
