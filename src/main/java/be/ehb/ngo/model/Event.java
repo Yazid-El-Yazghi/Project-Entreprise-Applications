@@ -1,6 +1,7 @@
 package be.ehb.ngo.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -9,13 +10,25 @@ public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotNull(message = "Tijdstip is verplicht")
     private LocalDateTime tijdstip;
+
+    @NotBlank(message = "Titel is verplicht")
     private String titel;
+
+    @NotBlank(message = "Omschrijving is verplicht")
     private String omschrijving;
+
+    @NotBlank(message = "Organisatie is verplicht")
     private String organisatie;
+
+    @NotBlank(message = "Email is verplicht")
+    @Email(message = "Email moet geldig zijn")
     private String email;
 
     @ManyToOne
+    @NotNull(message = "Locatie is verplicht")
     private Location locatie;
 
     public Long getId() { return id; }
